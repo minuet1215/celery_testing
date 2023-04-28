@@ -80,7 +80,7 @@ AUTH_PASSWORD_VALIDATORS = [
     },
 ]
 
-LANGUAGE_CODE = "ko-kr"
+LANGUAGE_CODE = "en"
 
 TIME_ZONE = "Asia/Seoul"
 
@@ -99,3 +99,11 @@ EMAIL_HOST_PASSWORD = env("EMAIL_HOST_PASSWORD")
 EMAIL_PORT = env("EMAIL_PORT")
 EMAIL_USE_TLS = env("EMAIL_USE_TLS")
 DEFAULT_FROM_EMAIL = env("DEFAULT_FROM_EMAIL")
+
+CELERY_BEAT_SCHEDULE = {
+    "scheduled_task": {
+        "task": "task_scheduler.tasks.add",
+        "schedule": 5.0,
+        "args": (10, 10),
+    }
+}
